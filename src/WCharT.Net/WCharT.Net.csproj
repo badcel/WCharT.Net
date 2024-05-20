@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <VersionPrefix>0.1.0</VersionPrefix>
+
+        <Authors>Marcel Tiede</Authors>
+        <Copyright>Marcel Tiede</Copyright>
+        <owners>badcel</owners>
+
+        <Description>A modern cross platform package to interop with WCharT data.</Description>
+        <PackageProjectUrl>https://github.com/badcel/WCharT</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+        <PackageReadmeFile>readme.md</PackageReadmeFile>
+        <PackageTags>wchart;native;interop;linux;windows;macos</PackageTags>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <RootNamespace>WCharT</RootNamespace>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+        <BUILD_FOR Condition="'$(RuntimeIdentifier)' != ''">$(RuntimeIdentifier.ToUpper())</BUILD_FOR>
+        <BUILD_FOR Condition="'$(RuntimeIdentifier)' == ''">UNIX</BUILD_FOR>
+        <DefineConstants>$(DefineConstants);BUILD_FOR_$(BUILD_FOR)</DefineConstants>
+
+        <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <NoWarn>NU5131</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+        <IsAotCompatible>true</IsAotCompatible>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../../readme.md" Pack="true" PackagePath="/" Visible="false"/>
+        <None Include="obj/Release/net6.0/ref/WCharT.Net.dll" Pack="true" PackagePath="ref/net6.0" Visible="false"/>
+        <None Include="bin/Release/net6.0/unix/WCharT.Net.dll" Pack="true" PackagePath="runtimes/unix/lib/net6.0" Visible="false"/>
+        <None Include="bin/Release/net6.0/windows/WCharT.Net.dll" Pack="true" PackagePath="runtimes/windows/lib/net6.0" Visible="false"/>
+        <None Include="obj/Release/net8.0/ref/WCharT.Net.dll" Pack="true" PackagePath="ref/net8.0" Visible="false"/>
+        <None Include="bin/Release/net8.0/unix/WCharT.Net.dll" Pack="true" PackagePath="runtimes/unix/lib/net8.0" Visible="false"/>
+        <None Include="bin/Release/net8.0/windows/WCharT.Net.dll" Pack="true" PackagePath="runtimes/windows/lib/net8.0" Visible="false"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net7.0'"/>
+    </ItemGroup>
+</Project>

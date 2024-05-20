@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DF100067-E33C-4832-83F5-354B71555EC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{A84D4649-3834-4DDC-A7D2-5DD527907861}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+		Directory.Build.props = Directory.Build.props
+		..\readme.md = ..\readme.md
+		..\.github\dependabot.yml = ..\.github\dependabot.yml
+		..\.github\workflows\ci.yml = ..\.github\workflows\ci.yml
+		build.fsx = build.fsx
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCharT.Net", "WCharT.Net\WCharT.Net.csproj", "{CC2D672F-0FDC-4190-9DCC-980278D043BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCharT.Net.Tests", "WCharT.Net.Tests\WCharT.Net.Tests.csproj", "{F417D234-BB7A-48C4-8DA9-6594943BC052}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC2D672F-0FDC-4190-9DCC-980278D043BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC2D672F-0FDC-4190-9DCC-980278D043BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC2D672F-0FDC-4190-9DCC-980278D043BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC2D672F-0FDC-4190-9DCC-980278D043BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F417D234-BB7A-48C4-8DA9-6594943BC052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F417D234-BB7A-48C4-8DA9-6594943BC052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F417D234-BB7A-48C4-8DA9-6594943BC052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F417D234-BB7A-48C4-8DA9-6594943BC052}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC2D672F-0FDC-4190-9DCC-980278D043BB} = {DF100067-E33C-4832-83F5-354B71555EC7}
+		{F417D234-BB7A-48C4-8DA9-6594943BC052} = {DF100067-E33C-4832-83F5-354B71555EC7}
+	EndGlobalSection
+EndGlobal

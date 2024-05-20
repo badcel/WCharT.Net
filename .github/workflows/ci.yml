@@ -1,0 +1,86 @@
+name: 'CI'
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish_release:
+        description: If this build should publish nuget packages
+        required: true
+        type: boolean
+      version_suffix:
+        description: Suffix of the version number. Can be used to create a preview package.
+        required: false
+        type: string
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+  pull_request:
+
+env:
+  configuration: Release
+  publish_release: ${{ github.event.inputs.publish_release }}
+  version_suffix: ${{ github.event.inputs.version_suffix }}
+  tester_framework: net8.0
+
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ windows-latest, macos-latest, ubuntu-latest ]
+    
+    steps:
+      - name: Checkout with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Prepare .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            6.0.x
+            8.0.x
+
+      - name: Verify code format
+        if: matrix.os == 'ubuntu-latest'
+        run: dotnet format --verify-no-changes
+        working-directory: './src'
+
+      - name: Run unit tests ubuntu
+        if: matrix.os == 'ubuntu-latest'
+        env:
+          RuntimeIdentifier: unix
+        run: dotnet test -c ${{ env.configuration }}
+        working-directory: './src'
+
+      - name: Run unit tests macos
+        if: matrix.os == 'macos-latest'
+        env:
+          RuntimeIdentifier: unix
+        run: dotnet test -c ${{ env.configuration }}
+        working-directory: './src'
+
+      - name: Run unit tests windows
+        if: matrix.os == 'windows-latest'
+        env:
+          RuntimeIdentifier: windows
+        run: dotnet test -c ${{ env.configuration }}
+        working-directory: './src'
+
+      - name: Build solution
+        run: dotnet fsi build.fsx
+        working-directory: './src'
+
+      - name: Pack release version
+        if: env.publish_release == 'true' && matrix.os == 'ubuntu-latest'
+        run: dotnet pack WCharT.Net/WCharT.Net.csproj --no-build --nologo -c ${{ env.configuration }} --version-suffix "${{ env.version_suffix }}" -o ../Nuget
+        working-directory: './src'
+
+      - name: Publish to nuget org
+        if: env.publish_release == 'true' && matrix.os == 'ubuntu-latest'
+        run: dotnet nuget push "*.nupkg" -k ${{ secrets.NUGET_API_KEY }} -s nuget.org
+        working-directory: './Nuget'

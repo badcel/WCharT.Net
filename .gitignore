@@ -1,0 +1,26 @@
+#Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+*.Artifacts
+
+*.nupkg
+
+#.vscode/
+global.json
+coverage.*
+
+*~
+
+#meson
+
+#Rider
+*.idea
+
+# Visual Studio
+.vs/
+*.DotSettings.user
+
+#Docs
+_site/
