@@ -7,7 +7,7 @@
         <owners>badcel</owners>
 
         <Description>A modern cross platform package to interop with WCharT data.</Description>
-        <PackageProjectUrl>https://github.com/badcel/WCharT</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/badcel/WCharT.Net</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
