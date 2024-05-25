@@ -14,7 +14,7 @@ Command.Run(
 //Create binary for Windows
 Command.Run(
     name = "dotnet",
-    args = "build --runtime windows --configuration Release",
+    args = "build --runtime win --configuration Release",
     workingDirectory = wchartDir
 )
 

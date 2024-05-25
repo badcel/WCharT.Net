@@ -1,4 +1,4 @@
-#if BUILD_FOR_WINDOWS
+#if BUILD_FOR_WIN
 
 using System.Text;
 

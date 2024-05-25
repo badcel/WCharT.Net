@@ -67,7 +67,7 @@ jobs:
       - name: Run unit tests windows
         if: matrix.os == 'windows-latest'
         env:
-          RuntimeIdentifier: windows
+          RuntimeIdentifier: win
         run: dotnet test -c ${{ env.configuration }}
         working-directory: './src'
 

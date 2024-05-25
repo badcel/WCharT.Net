@@ -1,6 +1,6 @@
 using System;
 
-#if BUILD_FOR_UNIX || BUILD_FOR_WINDOWS
+#if BUILD_FOR_UNIX || BUILD_FOR_WIN
 namespace WCharT;
 
 public readonly ref partial struct WCharTString
