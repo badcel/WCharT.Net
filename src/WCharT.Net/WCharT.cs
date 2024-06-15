@@ -1,4 +1,4 @@
-#if BUILD_FOR_WIN
+#if TARGET_WINDOWS
 using Platform = WCharT.Platforms.Windows;
 #else
 using Platform = WCharT.Platforms.Unix;

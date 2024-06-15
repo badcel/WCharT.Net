@@ -20,9 +20,7 @@
         <RootNamespace>WCharT</RootNamespace>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-        <BUILD_FOR Condition="'$(RuntimeIdentifier)' != ''">$(RuntimeIdentifier.ToUpper())</BUILD_FOR>
-        <BUILD_FOR Condition="'$(RuntimeIdentifier)' == ''">UNIX</BUILD_FOR>
-        <DefineConstants>$(DefineConstants);BUILD_FOR_$(BUILD_FOR)</DefineConstants>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' == 'win'">$(DefineConstants);TARGET_WINDOWS</DefineConstants>
 
         <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
         <IncludeBuildOutput>false</IncludeBuildOutput>
