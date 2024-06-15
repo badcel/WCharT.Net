@@ -1,30 +1,33 @@
-using System;
+#if BUILD_FOR_WIN
+using Platform = WCharT.Platforms.Windows;
+#else
+using Platform = WCharT.Platforms.Unix;
+#endif
 
-#if BUILD_FOR_UNIX || BUILD_FOR_WIN
 namespace WCharT;
 
-public readonly ref partial struct WCharTString
+public readonly ref struct WCharTString
 {
     private readonly ReadOnlySpan<byte> data;
 
     public unsafe WCharTString(byte* p)
     {
-        data = CreateData(p);
+        data = Platform.CreateData(p);
     }
 
     public WCharTString(string str)
     {
-        data = CreateData(str);
+        data = Platform.CreateData(str);
     }
 
     public WCharTString(int length)
     {
-        data = CreateData(length);
+        data = Platform.CreateData(length);
     }
 
     public string GetString()
     {
-        return GetString(data);
+        return Platform.GetString(data);
     }
 
     public ref readonly byte GetPinnableReference() => ref data.GetPinnableReference();
@@ -33,12 +36,4 @@ public readonly ref partial struct WCharTString
     {
         return obj.data;
     }
-
-    private static unsafe ReadOnlySpan<byte> CreateData(byte* p)
-    {
-        return (IntPtr)p == IntPtr.Zero
-            ? ReadOnlySpan<byte>.Empty
-            : new ReadOnlySpan<byte>(p, GetLength(p));
-    }
 }
-#endif

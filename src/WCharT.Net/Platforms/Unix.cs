@@ -1,20 +1,17 @@
-#if BUILD_FOR_UNIX
-
-using System;
 using System.Text;
 
-namespace WCharT;
+namespace WCharT.Platforms;
 
-public readonly ref partial struct WCharTString
+internal static class Unix
 {
-    private static ReadOnlySpan<byte> CreateData(int chars)
+    public static ReadOnlySpan<byte> CreateData(int chars)
     {
         var length = chars * sizeof(uint);
         var data = new byte[length + sizeof(uint)]; //Null terminated
         return new ReadOnlySpan<byte>(data, 0, length);
     }
 
-    private static ReadOnlySpan<byte> CreateData(string str)
+    public static ReadOnlySpan<byte> CreateData(string str)
     {
         var src = Encoding.UTF32.GetBytes(str);
         var dest = new byte[src.Length + sizeof(uint)];
@@ -26,9 +23,16 @@ public readonly ref partial struct WCharTString
         return new ReadOnlySpan<byte>(dest, 0, src.Length);
     }
 
-    private static string GetString(ReadOnlySpan<byte> data)
+    public static string GetString(ReadOnlySpan<byte> data)
     {
         return Encoding.UTF32.GetString(data);
+    }
+
+    public static unsafe ReadOnlySpan<byte> CreateData(byte* p)
+    {
+        return (IntPtr)p == IntPtr.Zero
+            ? ReadOnlySpan<byte>.Empty
+            : new ReadOnlySpan<byte>(p, GetLength(p));
     }
 
     private static unsafe int GetLength(byte* ptr)
@@ -46,4 +50,3 @@ public readonly ref partial struct WCharTString
         }
     }
 }
-#endif

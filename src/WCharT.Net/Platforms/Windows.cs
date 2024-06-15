@@ -1,19 +1,17 @@
-#if BUILD_FOR_WIN
-
 using System.Text;
 
-namespace WCharT;
+namespace WCharT.Platforms;
 
-public readonly ref partial struct WCharTString
+internal static class Windows
 {
-    private static ReadOnlySpan<byte> CreateData(int chars)
+    public static ReadOnlySpan<byte> CreateData(int chars)
     {
         var length = chars * sizeof(ushort);
         var data = new byte[length + sizeof(ushort)]; //Null terminated
         return new ReadOnlySpan<byte>(data, 0, length);
     }
 
-    private static ReadOnlySpan<byte> CreateData(string str)
+    public static ReadOnlySpan<byte> CreateData(string str)
     {
         var src = Encoding.Unicode.GetBytes(str);
         var dest = new byte[src.Length + sizeof(ushort)];
@@ -25,24 +23,30 @@ public readonly ref partial struct WCharTString
         return new ReadOnlySpan<byte>(dest, 0, src.Length);
     }
 
-    private static string GetString(ReadOnlySpan<byte> data)
+    public static string GetString(ReadOnlySpan<byte> data)
     {
         return Encoding.Unicode.GetString(data);
     }
-    
+
+    public static unsafe ReadOnlySpan<byte> CreateData(byte* p)
+    {
+        return (IntPtr)p == IntPtr.Zero
+            ? ReadOnlySpan<byte>.Empty
+            : new ReadOnlySpan<byte>(p, GetLength(p));
+    }
+
     private static unsafe int GetLength(byte* ptr)
     {
         //check code to throw exception in case of arithmethic overflow
         checked
         {
-            var current = (ushort*) ptr;
+            var current = (ushort*)ptr;
             while (*current != 0)
             {
                 current += 1; //Jump to next unicode char
             }
 
-            return (int) ((byte*) current - ptr);
+            return (int)((byte*)current - ptr);
         }
     }
 }
-#endif
