@@ -7,7 +7,7 @@ internal static class Windows
     public static ReadOnlySpan<byte> CreateData(int chars)
     {
         var length = chars * sizeof(ushort);
-        var data = new byte[length + sizeof(ushort)]; //Null terminated
+        var data = new byte[length];
         return new ReadOnlySpan<byte>(data, 0, length);
     }
 
