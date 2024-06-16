@@ -8,17 +8,24 @@ To work with WCharT data create a new instance of `WCharTString`:
 
 ```csharp
 //Read data from a byte*
-byte* pointer = NativeCal();
-var data = new WCharTString(pointer).GetString();
+byte* pointer = NativeCall();
+var str = new WCharTString(pointer).GetString();
 
 //Create a buffer for a native library and read the data after it was filled
 ReadOnlySpan<byte> data = new WCharTString(int bufferCharSize);
-NativeCall(data);
+NativeCall(...);
 var str = data.GetString();
 
 //Pass a string to a native library
 ReadOnlySpan<byte> data = new WCharTString(string str);
 NativeCall(data);
+
+//Can be used in fixed statements
+var data = new WCharTString(string str);
+fixed (byte* ptr = data)
+{
+    NativeCall(ptr);
+}
 ```
 
 ## Build
