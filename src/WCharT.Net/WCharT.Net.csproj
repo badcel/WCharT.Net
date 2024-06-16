@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <VersionPrefix>0.1.1</VersionPrefix>
+        <VersionPrefix>0.1.2</VersionPrefix>
 
         <Authors>Marcel Tiede</Authors>
         <Copyright>Marcel Tiede</Copyright>
