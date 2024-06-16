@@ -1,5 +1,4 @@
 using System.Runtime.InteropServices;
-using System.Text;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,6 +14,17 @@ public class Tests
         var str = new WCharTString(text);
 
         str.GetString().Should().Be(text);
+    }
+
+    [TestMethod]
+    public void BufferSizeIsRetained()
+    {
+        var bufferSize = 3;
+        var str = new WCharTString(bufferSize);
+
+        var result = str.GetString();
+        result.Should().Be(new string(new[] { char.MinValue, char.MinValue, char.MinValue }));
+        result.Length.Should().Be(bufferSize);
     }
 
     [TestMethod]

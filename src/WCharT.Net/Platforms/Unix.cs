@@ -7,7 +7,7 @@ internal static class Unix
     public static ReadOnlySpan<byte> CreateData(int chars)
     {
         var length = chars * sizeof(uint);
-        var data = new byte[length + sizeof(uint)]; //Null terminated
+        var data = new byte[length];
         return new ReadOnlySpan<byte>(data, 0, length);
     }
 
