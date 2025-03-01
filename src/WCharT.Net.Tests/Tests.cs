@@ -1,5 +1,4 @@
 using System.Runtime.InteropServices;
-using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace WCharT.Tests;
@@ -13,7 +12,7 @@ public class Tests
         var text = "Test";
         var str = new WCharTString(text);
 
-        str.GetString().Should().Be(text);
+        Assert.AreEqual(str.GetString(), text);
     }
 
     [TestMethod]
@@ -23,8 +22,9 @@ public class Tests
         var str = new WCharTString(bufferSize);
 
         var result = str.GetString();
-        result.Should().Be(new string(new[] { char.MinValue, char.MinValue, char.MinValue }));
-        result.Length.Should().Be(bufferSize);
+
+        Assert.AreEqual(result, new string(new[] { char.MinValue, char.MinValue, char.MinValue }));
+        Assert.AreEqual(result.Length, bufferSize);
     }
 
     [TestMethod]
@@ -47,7 +47,7 @@ public class Tests
             fixed (byte* p = data)
             {
                 var str = new WCharTString(p);
-                str.GetString().Should().Be(new string(new[] { '\u0100', '\u0100' }));
+                Assert.AreEqual(str.GetString(), new string(new[] { '\u0100', '\u0100' }));
             }
         }
 #pragma warning restore CA1861
@@ -79,7 +79,7 @@ public class Tests
             fixed (byte* p = data)
             {
                 var str = new WCharTString(p);
-                str.GetString().Should().Be(new string(new[] { '\u0100', '\u0100' }));
+                Assert.AreEqual(str.GetString(), new string(new[] { '\u0100', '\u0100' }));
             }
         }
 #pragma warning restore CA1861
