@@ -44,6 +44,7 @@ jobs:
           dotnet-version: |
             8.0.x
             9.0.x
+            10.0.x
 
       - name: Verify code format
         if: matrix.os == 'ubuntu-latest'
@@ -52,15 +53,11 @@ jobs:
 
       - name: Run unit tests ubuntu
         if: matrix.os == 'ubuntu-latest'
-        env:
-          RuntimeIdentifier: unix
         run: dotnet test -c ${{ env.configuration }}
         working-directory: './src'
 
       - name: Run unit tests macos
         if: matrix.os == 'macos-latest'
-        env:
-          RuntimeIdentifier: unix
         run: dotnet test -c ${{ env.configuration }}
         working-directory: './src'
 

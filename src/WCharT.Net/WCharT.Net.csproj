@@ -34,11 +34,17 @@
 
     <ItemGroup>
         <None Include="../../readme.md" Pack="true" PackagePath="/" Visible="false"/>
+
         <None Include="obj/Release/net8.0/ref/WCharT.Net.dll" Pack="true" PackagePath="ref/net8.0" Visible="false"/>
         <None Include="bin/Release/net8.0/unix/WCharT.Net.dll" Pack="true" PackagePath="runtimes/unix/lib/net8.0" Visible="false"/>
         <None Include="bin/Release/net8.0/win/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win/lib/net8.0" Visible="false"/>
+
         <None Include="obj/Release/net9.0/ref/WCharT.Net.dll" Pack="true" PackagePath="ref/net9.0" Visible="false"/>
         <None Include="bin/Release/net9.0/unix/WCharT.Net.dll" Pack="true" PackagePath="runtimes/unix/lib/net9.0" Visible="false"/>
         <None Include="bin/Release/net9.0/win/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win/lib/net9.0" Visible="false"/>
+
+        <None Include="obj/Release/net10.0/ref/WCharT.Net.dll" Pack="true" PackagePath="ref/net10.0" Visible="false"/>
+        <None Include="bin/Release/net10.0/unix/WCharT.Net.dll" Pack="true" PackagePath="runtimes/unix/lib/net10.0" Visible="false"/>
+        <None Include="bin/Release/net10.0/win/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win/lib/net10.0" Visible="false"/>
     </ItemGroup>
 </Project>
