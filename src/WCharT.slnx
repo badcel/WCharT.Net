@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/SolutionItems/">
+    <File Path="../.github/dependabot.yml" />
+    <File Path="../.github/workflows/ci.yml" />
+    <File Path="../.gitignore" />
+    <File Path="../readme.md" />
+    <File Path="build.fsx" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="WCharT.Net.Tests/WCharT.Net.Tests.csproj" />
+    <Project Path="WCharT.Net/WCharT.Net.csproj" />
+  </Folder>
+</Solution>
