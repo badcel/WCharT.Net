@@ -21,7 +21,7 @@
         <RootNamespace>WCharT</RootNamespace>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-        <DefineConstants Condition="'$(RuntimeIdentifier)' == 'win'">$(DefineConstants);TARGET_WINDOWS</DefineConstants>
+        <DefineConstants Condition="'$(WChartTarget)' == 'win'">$(DefineConstants);TARGET_WINDOWS</DefineConstants>
 
         <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
         <IncludeBuildOutput>false</IncludeBuildOutput>
@@ -35,16 +35,28 @@
     <ItemGroup>
         <None Include="../../readme.md" Pack="true" PackagePath="/" Visible="false"/>
 
-        <None Include="obj/Release/net8.0/ref/WCharT.Net.dll" Pack="true" PackagePath="ref/net8.0" Visible="false"/>
-        <None Include="bin/Release/net8.0/unix/WCharT.Net.dll" Pack="true" PackagePath="runtimes/unix/lib/net8.0" Visible="false"/>
-        <None Include="bin/Release/net8.0/win/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win/lib/net8.0" Visible="false"/>
+        <None Include="../artifacts/ref/obj/WCharT.Net/release_net8.0/ref/WCharT.Net.dll" Pack="true" PackagePath="ref/net8.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net8.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/linux-x64/lib/net8.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net8.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/linux-arm64/lib/net8.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net8.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/osx-x64/lib/net8.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net8.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/osx-arm64/lib/net8.0" Visible="false"/>
+        <None Include="../artifacts/bin/win/bin/WCharT.Net/release_net8.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win-x64/lib/net8.0" Visible="false"/>
+        <None Include="../artifacts/bin/win/bin/WCharT.Net/release_net8.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win-arm64/lib/net8.0" Visible="false"/>
 
-        <None Include="obj/Release/net9.0/ref/WCharT.Net.dll" Pack="true" PackagePath="ref/net9.0" Visible="false"/>
-        <None Include="bin/Release/net9.0/unix/WCharT.Net.dll" Pack="true" PackagePath="runtimes/unix/lib/net9.0" Visible="false"/>
-        <None Include="bin/Release/net9.0/win/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win/lib/net9.0" Visible="false"/>
+        <None Include="../artifacts/ref/obj/WCharT.Net/release_net9.0/ref/WCharT.Net.dll" Pack="true" PackagePath="ref/net9.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net9.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/linux-x64/lib/net9.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net9.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/linux-arm64/lib/net9.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net9.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/osx-x64/lib/net9.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net9.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/osx-arm64/lib/net9.0" Visible="false"/>
+        <None Include="../artifacts/bin/win/bin/WCharT.Net/release_net9.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win-x64/lib/net9.0" Visible="false"/>
+        <None Include="../artifacts/bin/win/bin/WCharT.Net/release_net9.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win-arm64/lib/net9.0" Visible="false"/>
 
-        <None Include="obj/Release/net10.0/ref/WCharT.Net.dll" Pack="true" PackagePath="ref/net10.0" Visible="false"/>
-        <None Include="bin/Release/net10.0/unix/WCharT.Net.dll" Pack="true" PackagePath="runtimes/unix/lib/net10.0" Visible="false"/>
-        <None Include="bin/Release/net10.0/win/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win/lib/net10.0" Visible="false"/>
+        <None Include="../artifacts/ref/obj/WCharT.Net/release_net10.0/ref/WCharT.Net.dll" Pack="true" PackagePath="ref/net10.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net10.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/linux-x64/lib/net10.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net10.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/linux-arm64/lib/net10.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net10.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/osx-x64/lib/net10.0" Visible="false"/>
+        <None Include="../artifacts/bin/unix/bin/WCharT.Net/release_net10.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/osx-arm64/lib/net10.0" Visible="false"/>
+        <None Include="../artifacts/bin/win/bin/WCharT.Net/release_net10.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win-x64/lib/net10.0" Visible="false"/>
+        <None Include="../artifacts/bin/win/bin/WCharT.Net/release_net10.0/WCharT.Net.dll" Pack="true" PackagePath="runtimes/win-arm64/lib/net10.0" Visible="false"/>
     </ItemGroup>
 </Project>
